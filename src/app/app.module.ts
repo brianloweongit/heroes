@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
+/* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 
 // Imports for loading & configuring the in-memory web api
@@ -16,7 +17,7 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroSearchComponent }  from './hero-search.component';
 import { HeroService }          from './hero.service';
 
-import { NotFoundComponent }    from './not-found';
+import * as notFound            from './not-found';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { NotFoundComponent }    from './not-found';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
-    NotFoundComponent,
+    notFound.NotFoundComponent,
     HeroSearchComponent
   ],
   providers: [ HeroService ],
