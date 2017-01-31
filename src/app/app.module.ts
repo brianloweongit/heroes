@@ -16,6 +16,8 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroSearchComponent }  from './hero-search.component';
 import { HeroService }          from './hero.service';
 
+import { NotFoundComponent }    from './not-found';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { HeroService }          from './hero.service';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
+    NotFoundComponent,
     HeroSearchComponent
   ],
   providers: [ HeroService ],
