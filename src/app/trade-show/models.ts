@@ -1,31 +1,41 @@
+export interface IBudget {
+  Allocated: number;
+  Spent: number;
+}
+
+export class Budget implements IBudget {
+  Allocated: number;
+  Spent: number;
+}
+
 export interface IShow {
-  Title: string;
-  StartDate: Date;
-  EndDate: Date;
-  Categories: ShowCategory[];
-  Venue: IVenue;
-  Exhibitors: IExhibitor[];
-  Visitors: IVisitor[];
-  Suppliers: ISupplier[];
-  ProjectFile: string;
   Budget: IBudget;
+  Categories: ShowCategory[];
+  EndDate: Date;
+  Exhibitors: IExhibitor[];
+  ProjectFile: string;
   Promotions: IPromotion[];
   Reviews: IReview[]
+  StartDate: Date;
+  Suppliers: ISupplier[];
+  Title: string;
+  Venue: IVenue;
+  Visitors: IVisitor[];
 }
 
 export class Show implements IShow {
-  Title: string;
-  StartDate: Date;
-  EndDate: Date;
-  Categories: ShowCategory[];
-  Venue: IVenue;
-  Exhibitors: IExhibitor[];
-  Visitors: IVisitor[];
-  Suppliers: ISupplier[];
-  ProjectFile: string;
   Budget: IBudget;
+  Categories: ShowCategory[];
+  EndDate: Date;
+  Exhibitors: IExhibitor[];
+  ProjectFile: string;
   Promotions: IPromotion[];
   Reviews: IReview[]
+  StartDate: Date;
+  Suppliers: ISupplier[];
+  Title: string;
+  Venue: IVenue;
+  Visitors: IVisitor[];
 }
 
 export enum ShowCategory {
@@ -44,55 +54,64 @@ export interface ILocation {
 }
 
 export interface IContact {
+  Address: string;
+  Email: string;
   Name: string;
   Phone: string;
-  Email: string;
-  Address: string;
 }
 
 export enum Grade { Budget, Medium, Premium, Gold }
 
 export interface IVenue extends IBusiness {
-  GuideSpace: number;
+  Grade: Grade;
   GuideExhibitorCount: number;
+  GuideSpace: number;
   GuideVisitorCount: number;
-  Grade: Grade
 }
 
 export interface IBusiness {
-  Title: string;
-  Location: ILocation;
   Contact: IContact;
   Links: string[];
+  Location: ILocation;
+  Title: string;
 }
 
 export class Business implements IBusiness {
-  Title: string;
-  Location: ILocation;
   Contact: IContact;
   Links: string[];
+  Location: ILocation;
+  Title: string;
 }
 
 export class Venue extends Business implements IBusiness, IVenue {
+  Grade: Grade;
   GuideExhibitorCount: number;
   GuideSpace: number;
   GuideVisitorCount: number;
-  Grade: Grade
 }
 
 export enum BusinessCategory {
-  Venue, Catering, Photography, Couture, Stationery,
-  HairAndMakeUp, Jewellery, Transport, Accommodation, Travel, Insurance
+  Accommodation,
+  Catering,
+  Couture,
+  HairAndMakeUp,
+  Insurance
+  Jewellery,
+  Photography,
+  Stationery,
+  Transport,
+  Travel,
+  Venue,
 }
 
 export interface IExhibitor extends IBusiness {
   Category: BusinessCategory;
-  Grade: Grade
+  Grade: Grade;
 }
 
 export class Exhibitor extends Business implements IExhibitor, IBusiness {
   Category: BusinessCategory;
-  Grade: Grade
+  Grade: Grade;
 }
 
 export interface IVisitor {
@@ -101,80 +120,75 @@ export interface IVisitor {
 }
 export class Visitor implements IVisitor {
   Person: IContact;
-  Grade: Grade
+  Grade: Grade;
 }
 
 export interface ISupplier extends IBusiness {
   Category: BusinessCategory;
-  Grade: Grade
+  Grade: Grade;
 }
 
 export class Supplier extends Business implements ISupplier {
   Category: BusinessCategory;
-  Grade: Grade
+  Grade: Grade;
 }
 export enum ProjectStatus {
-  New, InProgress, Complete, Archived, Shelved
+  Archived,
+  Complete,
+  InProgress,
+  New,
+  Shelved
 }
 export class Project {
-  Title: string;
-  MasterFile: string;
   Manager: IContact;
-  Status: ProjectStatus
+  MasterFile: string;
+  Status: ProjectStatus;
+  Title: string;
 }
 
-export interface IBudget {
-  Allocated: number;
-  Spent: number;
-}
-
-export class Budget implements IBudget {
-  Allocated: number;
-  Spent: number;
-}
 
 export interface IPromotion {
-  Type: string;
-  PurchaseDate: Date;
+  Channel: string;
   Cost: number;
   Creator: IContact;
-  Channel: string;
+  Evaluation: string;
   Example: string;
   PublishedDate: Date;
+  PurchaseDate: Date;
   Reach: number;
-  Evaluation: any;
-  Resource: any;
+  Resource: string;
+  Type: string;
 }
 
 export class Promotion implements IPromotion {
-  Type: string;
-  PurchaseDate: Date;
+  Channel: string;
   Cost: number;
   Creator: IContact;
-  Channel: string;
+  Evaluation: string;
   Example: string;
   PublishedDate: Date;
+  PurchaseDate: Date;
   Reach: number;
-  Evaluation: any;
-  Resource: any;
+  Resource: string;
+  Type: string;
 }
 
 export class IReview {
-  Type: string;
-  Date: Date;
   Channel: string;
   Creator: IContact;
+  Date: Date;
+  Evaluation: string;
   Reach: number;
-  Evaluation: any;
   ReUseAgreed: boolean;
+  Type: string;
 }
 
 export class Review implements IReview {
-  Type: string;
-  Date: Date;
   Channel: string;
   Creator: IContact;
+  Date: Date;
+  Evaluation: string;
   Reach: number;
-  Evaluation: any;
   ReUseAgreed: boolean;
+  Type: string;
 }
