@@ -2,8 +2,8 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
+import { HeroesComponent,
+         HeroDetailComponent }  from './hero';      // barrel
 import * as notFound            from './not-found'; // barrel
 
 const routes: Routes = [
